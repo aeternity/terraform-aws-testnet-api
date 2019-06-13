@@ -8,14 +8,13 @@ module "aws_deploy-api_uat-eu-north-1" {
   static_nodes      = 0
   spot_nodes        = 0
   gateway_nodes_min = 2
-  gateway_nodes_max = 30
+  gateway_nodes_max = 10
   dns_zone          = "${var.dns_zone}"
   gateway_dns       = "origin-${var.domain}"
 
   spot_price       = "0.15"
   instance_type    = "t3.large"
   ami_name         = "aeternity-ubuntu-16.04-v1549009934"
-  root_volume_size = 40
 
   additional_storage      = 1
   additional_storage_size = 30
