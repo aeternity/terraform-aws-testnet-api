@@ -12,9 +12,9 @@ module "aws_deploy-api_uat-eu-north-1" {
   dns_zone          = "${var.dns_zone}"
   gateway_dns       = "origin-${var.domain}"
 
-  spot_price       = "0.15"
-  instance_type    = "t3.large"
-  ami_name         = "aeternity-ubuntu-16.04-v1549009934"
+  spot_price    = "0.15"
+  instance_type = "t3.large"
+  ami_name      = "aeternity-ubuntu-16.04-v1549009934"
 
   additional_storage      = 1
   additional_storage_size = 30
