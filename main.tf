@@ -1,4 +1,4 @@
-module "aws_deploy-uat-eu-north-1" {
+module "aws_deploy-api_uat-eu-north-1" {
   source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v1.0.0"
   env               = "api_uat"
   bootstrap_version = "${var.bootstrap_version}"
@@ -36,11 +36,11 @@ module "aws_gateway" {
   api_alias = "${var.domain_alias}"
 
   loadbalancers = [
-    "${module.aws_deploy-uat-eu-north-1.gateway_lb_dns}",
+    "${module.aws_deploy-api_uat-eu-north-1.gateway_lb_dns}",
   ]
 
   loadbalancers_zones = [
-    "${module.aws_deploy-uat-eu-north-1.gateway_lb_zone_id}",
+    "${module.aws_deploy-api_uat-eu-north-1.gateway_lb_zone_id}",
   ]
 
   loadbalancers_regions = [
