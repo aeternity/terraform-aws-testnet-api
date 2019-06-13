@@ -36,15 +36,15 @@ module "aws_gateway" {
   api_alias = "${var.domain_alias}"
 
   loadbalancers = [
-    "${module.aws_deploy-uat-eu-north-1.gateway_lb_dns}"
+    "${module.aws_deploy-uat-eu-north-1.gateway_lb_dns}",
   ]
 
   loadbalancers_zones = [
-    "${module.aws_deploy-uat-eu-north-1.gateway_lb_zone_id}"
+    "${module.aws_deploy-uat-eu-north-1.gateway_lb_zone_id}",
   ]
 
   loadbalancers_regions = [
-    "eu-north-1"
+    "eu-north-1",
   ]
 
   providers = {
