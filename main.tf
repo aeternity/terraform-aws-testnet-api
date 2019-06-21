@@ -37,6 +37,8 @@ module "aws_gateway" {
   api_dns   = "${var.domain}"
   api_alias = "${var.domain_alias}"
 
+  validate_cert = true
+
   loadbalancers = [
     "${module.aws_deploy-api_uat-eu-north-1.gateway_lb_dns}",
   ]
