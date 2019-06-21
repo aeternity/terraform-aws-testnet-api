@@ -32,7 +32,7 @@ module "aws_deploy-api_uat-eu-north-1" {
 }
 
 module "aws_gateway" {
-  source    = "github.com/aeternity/terraform-aws-api-gateway?ref=v1.0.0"
+  source    = "github.com/aeternity/terraform-aws-api-gateway?ref=v1.1.0"
   dns_zone  = "${var.dns_zone}"
   api_dns   = "${var.domain}"
   api_alias = "${var.domain_alias}"
