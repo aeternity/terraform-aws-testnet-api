@@ -1,5 +1,5 @@
 module "aws_deploy-api_uat-eu-north-1" {
-  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v1.0.0"
+  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v1.1.1"
   env               = "api_uat"
   bootstrap_version = "${var.bootstrap_version}"
   vault_role        = "ae-node"
@@ -18,6 +18,9 @@ module "aws_deploy-api_uat-eu-north-1" {
 
   additional_storage      = 1
   additional_storage_size = 30
+
+  lb_stickiness_enabled         = true
+  lb_stickiness_cookie_duration = 172800 # 2 days
 
   aeternity = {
     package = "${var.package}"
