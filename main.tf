@@ -1,3 +1,11 @@
+resource "aws_acm_certificate" "cert" {
+  domain_name               = "${var.domain}"
+  subject_alternative_names = ["${var.domain_alias}"]
+  validation_method         = "DNS"
+
+  provider = "aws.us-east-1"
+}
+
 module "aws_deploy-api_uat-eu-north-1" {
   source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v1.1.1"
   env               = "api_uat"
@@ -32,12 +40,12 @@ module "aws_deploy-api_uat-eu-north-1" {
 }
 
 module "aws_gateway" {
-  source    = "github.com/aeternity/terraform-aws-api-gateway?ref=v1.1.0"
+  source    = "github.com/aeternity/terraform-aws-api-gateway?ref=v2.0.0"
   dns_zone  = "${var.dns_zone}"
   api_dns   = "${var.domain}"
   api_alias = "${var.domain_alias}"
 
-  validate_cert = true
+  certificate_arn = "${aws_acm_certificate.cert.arn}"
 
   loadbalancers = [
     "${module.aws_deploy-api_uat-eu-north-1.gateway_lb_dns}",
