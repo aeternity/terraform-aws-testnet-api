@@ -11,13 +11,14 @@ variable "package" {
 }
 
 variable "dns_zone" {
-  default = "Z2J3KVPABDNIL1"
+  default = "ZSEEAAX46MKWZ"
 }
 
 variable "domain" {
-  default = "api.testnet.ops.aeternity.com"
+  default = "testnet.aeternity.io"
 }
 
-variable "domain_alias" {
-  default = "sdk-testnet.aepps.com"
+variable "domain_aliases" {
+  type    = "list"
+  default = ["sdk-testnet.aepps.com", "freya.aeternity.io"]
 }

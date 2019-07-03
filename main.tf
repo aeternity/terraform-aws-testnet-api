@@ -1,6 +1,6 @@
 resource "aws_acm_certificate" "cert" {
   domain_name               = "${var.domain}"
-  subject_alternative_names = ["${var.domain_alias}"]
+  subject_alternative_names = "${var.domain_aliases}"
   validation_method         = "DNS"
 
   provider = "aws.us-east-1"
@@ -40,10 +40,10 @@ module "aws_deploy-api_uat-eu-north-1" {
 }
 
 module "aws_gateway" {
-  source    = "github.com/aeternity/terraform-aws-api-gateway?ref=v2.0.0"
-  dns_zone  = "${var.dns_zone}"
-  api_dns   = "${var.domain}"
-  api_alias = "${var.domain_alias}"
+  source      = "github.com/aeternity/terraform-aws-api-gateway?ref=v2.1.0"
+  dns_zone    = "${var.dns_zone}"
+  api_dns     = "${var.domain}"
+  api_aliases = "${var.domain_aliases}"
 
   certificate_arn = "${aws_acm_certificate.cert.arn}"
 
