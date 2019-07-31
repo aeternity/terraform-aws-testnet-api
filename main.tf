@@ -1,34 +1,23 @@
-resource "aws_acm_certificate" "cert" {
-  domain_name               = "${var.domain}"
-  subject_alternative_names = "${var.domain_aliases}"
-  validation_method         = "DNS"
-
-  provider = "aws.us-east-1"
-}
-
-module "aws_deploy-api_uat-eu-north-1" {
-  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v1.1.1"
+module "nodes_api_uat_stockholm" {
+  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.0.0"
   env               = "api_uat"
+  envid             = "api_uat"
   bootstrap_version = "${var.bootstrap_version}"
   vault_role        = "ae-node"
   vault_addr        = "${var.vault_addr}"
 
-  static_nodes      = 0
-  spot_nodes        = 0
-  gateway_nodes_min = 2
-  gateway_nodes_max = 10
-  dns_zone          = "${var.dns_zone}"
-  gateway_dns       = "origin-${var.domain}"
+  static_nodes   = 0
+  spot_nodes_min = 2
+  spot_nodes_max = 10
 
   spot_price    = "0.15"
   instance_type = "t3.large"
   ami_name      = "aeternity-ubuntu-16.04-v1549009934"
 
-  additional_storage      = 1
+  additional_storage      = true
   additional_storage_size = 30
 
-  lb_stickiness_enabled         = true
-  lb_stickiness_cookie_duration = 172800 # 2 days
+  asg_target_groups = "${module.lb_uat_stockholm.target_groups}"
 
   aeternity = {
     package = "${var.package}"
@@ -39,27 +28,27 @@ module "aws_deploy-api_uat-eu-north-1" {
   }
 }
 
-module "aws_gateway" {
-  source      = "github.com/aeternity/terraform-aws-api-gateway?ref=v2.1.0"
-  dns_zone    = "${var.dns_zone}"
-  api_dns     = "${var.domain}"
-  api_aliases = "${var.domain_aliases}"
-
-  certificate_arn = "${aws_acm_certificate.cert.arn}"
-
-  loadbalancers = [
-    "${module.aws_deploy-api_uat-eu-north-1.gateway_lb_dns}",
-  ]
-
-  loadbalancers_zones = [
-    "${module.aws_deploy-api_uat-eu-north-1.gateway_lb_zone_id}",
-  ]
-
-  loadbalancers_regions = [
-    "eu-north-1",
-  ]
+module "lb_uat_stockholm" {
+  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.0.0"
+  fqdn                      = "${var.lb_fqdn}"
+  dns_zone                  = "${var.dns_zone}"
+  security_group            = "${module.nodes_api_uat_stockholm.sg_id}"
+  vpc_id                    = "${module.nodes_api_uat_stockholm.vpc_id}"
+  subnets                   = "${module.nodes_api_uat_stockholm.subnets}"
+  internal_api_enabled      = true
+  state_channel_api_enabled = true
 
   providers = {
-    aws = "aws.us-east-1"
+    aws = "aws.eu-north-1"
   }
+}
+
+module "gateway_uat" {
+  source          = "github.com/aeternity/terraform-aws-api-gateway?ref=v3.0.1"
+  env             = "api_uat"
+  dns_zone        = "${var.dns_zone}"
+  api_domain      = "${var.domain}"
+  api_aliases     = "${var.domain_aliases}"
+  certificate_arn = "${aws_acm_certificate_validation.cert.certificate_arn}"
+  lb_fqdn         = "${var.lb_fqdn}"
 }
