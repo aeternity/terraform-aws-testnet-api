@@ -29,7 +29,8 @@ module "nodes_api_uat_stockholm" {
 }
 
 module "lb_uat_stockholm" {
-  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.0.0"
+  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.1.0"
+  env                       = "api_uat"
   fqdn                      = "${var.lb_fqdn}"
   dns_zone                  = "${var.dns_zone}"
   security_group            = "${module.nodes_api_uat_stockholm.sg_id}"
