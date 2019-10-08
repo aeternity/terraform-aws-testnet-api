@@ -53,4 +53,4 @@ module "gateway_uat" {
   api_aliases     = var.domain_aliases
   certificate_arn = aws_acm_certificate_validation.cert.certificate_arn
   lb_fqdn         = var.lb_fqdn
-}
+  mdw_fqdn        = var.mdw_fqdn

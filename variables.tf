@@ -26,3 +26,7 @@ variable "domain_aliases" {
   type    = "list"
   default = ["sdk-testnet.aepps.com", "freya.aeternity.io"]
 }
+
+variable "mdw_fqdn" {
+  default = "testnet.mdw.aepps.com"
+}
