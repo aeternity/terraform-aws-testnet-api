@@ -3,11 +3,11 @@ variable "vault_addr" {
 }
 
 variable "bootstrap_version" {
-  default = "v2.6.5"
+  default = "v2.8.0"
 }
 
 variable "package" {
-  default = "https://releases.aeternity.io/aeternity-5.0.0-rc.5-ubuntu-x86_64.tar.gz"
+  default = "https://releases.aeternity.io/aeternity-5.0.0-rc.6-ubuntu-x86_64.tar.gz"
 }
 
 variable "dns_zone" {
