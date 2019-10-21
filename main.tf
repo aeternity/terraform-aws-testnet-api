@@ -16,6 +16,7 @@ module "nodes_api_uat_stockholm" {
 
   additional_storage      = true
   additional_storage_size = 30
+  snapshot_filename       = "mnesia_uat_v-1_latest.tgz"
 
   asg_target_groups = "${module.lb_uat_stockholm.target_groups}"
 
