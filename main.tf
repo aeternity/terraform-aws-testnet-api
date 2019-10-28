@@ -1,5 +1,5 @@
 module "nodes_api_uat_stockholm" {
-  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.2.0"
+  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.3.0"
   env               = "api_uat"
   envid             = "api_uat"
   bootstrap_version = "${var.bootstrap_version}"
