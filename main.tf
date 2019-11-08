@@ -46,11 +46,12 @@ module "lb_uat_stockholm" {
 }
 
 module "gateway_uat" {
-  source          = "github.com/aeternity/terraform-aws-api-gateway?ref=v3.0.1"
+  source          = "github.com/aeternity/terraform-aws-api-gateway?ref=v3.1.0"
   env             = "api_uat"
   dns_zone        = var.dns_zone
   api_domain      = var.domain
   api_aliases     = var.domain_aliases
   certificate_arn = aws_acm_certificate_validation.cert.certificate_arn
   lb_fqdn         = var.lb_fqdn
+  mdw_fqdn        = var.mdw_fqdn
 }
