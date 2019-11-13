@@ -29,6 +29,37 @@ module "nodes_api_uat_stockholm" {
   }
 }
 
+module "nodes_api_uat_singapore" {
+  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.3.1"
+  env               = "api_uat"
+  envid             = "api_uat"
+  bootstrap_version = var.bootstrap_version
+  vault_role        = "ae-node"
+  vault_addr        = var.vault_addr
+
+  static_nodes   = 0
+  spot_nodes_min = 2
+  spot_nodes_max = 10
+
+  spot_price    = "0.15"
+  instance_type = "t3.large"
+  ami_name      = "aeternity-ubuntu-16.04-v1549009934"
+
+  additional_storage      = true
+  additional_storage_size = 30
+  snapshot_filename       = "mnesia_uat_v-1_latest.tgz"
+
+  asg_target_groups = module.lb_uat_stockholm.target_groups
+
+  aeternity = {
+    package = var.package
+  }
+
+  providers = {
+    aws = "ap-southeast-1"
+  }
+}
+
 module "lb_uat_stockholm" {
   source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.2.0"
   env                       = "api_uat"
