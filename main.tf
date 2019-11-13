@@ -29,6 +29,22 @@ module "nodes_api_uat_stockholm" {
   }
 }
 
+module "lb_uat_stockholm" {
+  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.2.0"
+  env                       = "api_uat"
+  fqdn                      = var.lb_fqdn
+  dns_zone                  = var.dns_zone
+  security_group            = module.nodes_api_uat_stockholm.sg_id
+  vpc_id                    = module.nodes_api_uat_stockholm.vpc_id
+  subnets                   = module.nodes_api_uat_stockholm.subnets
+  internal_api_enabled      = true
+  state_channel_api_enabled = true
+
+  providers = {
+    aws = "aws.eu-north-1"
+  }
+}
+
 module "nodes_api_uat_singapore" {
   source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.3.1"
   env               = "api_uat"
@@ -49,7 +65,7 @@ module "nodes_api_uat_singapore" {
   additional_storage_size = 30
   snapshot_filename       = "mnesia_uat_v-1_latest.tgz"
 
-  asg_target_groups = module.lb_uat_stockholm.target_groups
+  asg_target_groups = module.lb_uat_singapore.target_groups
 
   aeternity = {
     package = var.package
@@ -60,19 +76,19 @@ module "nodes_api_uat_singapore" {
   }
 }
 
-module "lb_uat_stockholm" {
+module "lb_uat_singapore" {
   source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.2.0"
   env                       = "api_uat"
   fqdn                      = var.lb_fqdn
   dns_zone                  = var.dns_zone
-  security_group            = module.nodes_api_uat_stockholm.sg_id
-  vpc_id                    = module.nodes_api_uat_stockholm.vpc_id
-  subnets                   = module.nodes_api_uat_stockholm.subnets
+  security_group            = module.nodes_api_uat_singapore.sg_id
+  vpc_id                    = module.nodes_api_uat_singapore.vpc_id
+  subnets                   = module.nodes_api_uat_singapore.subnets
   internal_api_enabled      = true
   state_channel_api_enabled = true
 
   providers = {
-    aws = "aws.eu-north-1"
+    aws = "aws.ap-southeast-1"
   }
 }
 
