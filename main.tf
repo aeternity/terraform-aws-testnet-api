@@ -56,7 +56,7 @@ module "nodes_api_uat_singapore" {
   }
 
   providers = {
-    aws = "ap-southeast-1"
+    aws = "aws.ap-southeast-1"
   }
 }
 
