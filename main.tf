@@ -11,11 +11,11 @@ module "nodes_api_uat_stockholm" {
   spot_nodes_max = 10
 
   spot_price    = "0.15"
-  instance_type = "t3.large"
+  instance_type = "c5.xlarge"
   ami_name      = "aeternity-ubuntu-16.04-v1549009934"
 
   additional_storage      = true
-  additional_storage_size = 30
+  additional_storage_size = 60
   snapshot_filename       = "mnesia_uat_v-1_latest.tgz"
 
   asg_target_groups = module.lb_uat_stockholm.target_groups
@@ -58,11 +58,11 @@ module "nodes_api_uat_singapore" {
   spot_nodes_max = 10
 
   spot_price    = "0.15"
-  instance_type = "t3.large"
+  instance_type = "c5.xlarge"
   ami_name      = "aeternity-ubuntu-16.04-v1549009934"
 
   additional_storage      = true
-  additional_storage_size = 30
+  additional_storage_size = 60
   snapshot_filename       = "mnesia_uat_v-1_latest.tgz"
 
   asg_target_groups = module.lb_uat_singapore.target_groups
