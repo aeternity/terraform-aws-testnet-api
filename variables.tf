@@ -30,3 +30,7 @@ variable "domain_aliases" {
 variable "mdw_fqdn" {
   default = "testnet.mdw.aepps.com"
 }
+
+variable "headers" {
+  default = ["Accept-Encoding", "Origin"]
+}
