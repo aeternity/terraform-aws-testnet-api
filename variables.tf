@@ -28,5 +28,5 @@ variable "domain_aliases" {
 }
 
 variable "mdw_fqdn" {
-  default = "testnet.mdw.aepps.com"
+  default = "testnet.aeternal.io"
 }
