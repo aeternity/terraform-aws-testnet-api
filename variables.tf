@@ -30,3 +30,7 @@ variable "domain_aliases" {
 variable "mdw_fqdn" {
   default = "testnet.aeternal.io"
 }
+
+variable "headers" {
+  default = ["Accept-Encoding", "Origin"]
+}

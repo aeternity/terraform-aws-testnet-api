@@ -93,7 +93,7 @@ module "lb_uat_singapore" {
 }
 
 module "gateway_uat" {
-  source          = "github.com/aeternity/terraform-aws-api-gateway?ref=v3.1.1"
+  source          = "github.com/aeternity/terraform-aws-api-gateway?ref=v3.1.2"
   env             = "api_uat"
   dns_zone        = var.dns_zone
   api_domain      = var.domain
@@ -101,4 +101,5 @@ module "gateway_uat" {
   certificate_arn = aws_acm_certificate_validation.cert.certificate_arn
   lb_fqdn         = var.lb_fqdn
   mdw_fqdn        = var.mdw_fqdn
+  headers         = var.headers
 }
