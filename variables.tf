@@ -34,3 +34,7 @@ variable "mdw_fqdn" {
 variable "headers" {
   default = ["Accept-Encoding", "Origin"]
 }
+
+variable "certificate_arn" {
+  default = "arn:aws:acm:us-east-1:106102538874:certificate/fd311c12-9e1c-4e98-bc7a-d8f2f80c7247"
+}
