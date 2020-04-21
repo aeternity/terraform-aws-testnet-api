@@ -77,7 +77,7 @@ module "nodes_api_uat_singapore" {
 }
 
 module "nodes_api_uat_singapore_channels" {
-  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.3.1"
+  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.5.0"
   env               = "api_uat"
   envid             = "api_uat"
   bootstrap_version = var.bootstrap_version
@@ -85,6 +85,7 @@ module "nodes_api_uat_singapore_channels" {
   vault_addr        = var.vault_addr
   subnets           = module.nodes_api_uat_singapore.subnets
   vpc_id            = module.nodes_api_uat_singapore.vpc_id
+  create_vpc        = false
 
   enable_state_channels = true
 
