@@ -85,7 +85,6 @@ module "nodes_api_uat_singapore_channels" {
   vault_addr        = var.vault_addr
   subnets           = module.nodes_api_uat_singapore.subnets
   vpc_id            = module.nodes_api_uat_singapore.vpc_id
-  create_vpc        = false
 
   enable_state_channels = true
 
