@@ -112,7 +112,7 @@ module "nodes_api_uat_singapore_channels" {
 }
 
 module "lb_uat_singapore" {
-  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.2.0"
+  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.3.0"
   env                       = "api_uat"
   fqdn                      = var.lb_fqdn
   dns_zone                  = var.dns_zone
