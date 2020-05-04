@@ -30,7 +30,7 @@ module "nodes_api_uat_stockholm" {
 }
 
 module "lb_uat_stockholm" {
-  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.3.0"
+  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.3.1"
   env                       = "api_uat"
   fqdn                      = var.lb_fqdn
   dns_zone                  = var.dns_zone
@@ -128,7 +128,7 @@ module "lb_uat_singapore" {
 }
 
 module "gateway_uat" {
-  source          = "github.com/aeternity/terraform-aws-api-gateway?ref=v3.2.0"
+  source          = "github.com/aeternity/terraform-aws-api-gateway?ref=v3.2.1"
   env             = "api_uat"
   dns_zone        = var.dns_zone
   api_domain      = var.domain
@@ -137,6 +137,7 @@ module "gateway_uat" {
   lb_fqdn         = var.lb_fqdn
   mdw_fqdn        = var.mdw_fqdn
   headers         = var.headers
+  ch_fqdn         = module.lb_uat_stockholm.dns_name
 
   api_cache_default_ttl = 1
   mdw_cache_default_ttl = 3
