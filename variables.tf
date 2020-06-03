@@ -40,5 +40,5 @@ variable "certificate_arn" {
 }
 
 variable "ae_mdw_fqdn" {
-  default = "mdw.uat.aeternity.io"
+  default = "mdw.testnet.aeternity.io"
 }
