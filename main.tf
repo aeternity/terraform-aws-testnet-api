@@ -128,7 +128,7 @@ module "lb_uat_singapore" {
 }
 
 module "gateway_uat" {
-  source          = "github.com/aeternity/terraform-aws-api-gateway?ref=v3.2.1"
+  source          = "github.com/aeternity/terraform-aws-api-gateway?ref=v3.2.2"
   env             = "api_uat"
   dns_zone        = var.dns_zone
   api_domain      = var.domain
@@ -138,6 +138,7 @@ module "gateway_uat" {
   mdw_fqdn        = var.mdw_fqdn
   headers         = var.headers
   ch_fqdn         = module.lb_uat_stockholm.dns_name
+  ae_mdw_fqdn     = var.ae_mdw_fqdn
 
   api_cache_default_ttl = 1
   mdw_cache_default_ttl = 3
