@@ -15,7 +15,7 @@ module "nodes_api_uat_stockholm" {
   ami_name      = "aeternity-ubuntu-16.04-v1549009934"
 
   additional_storage      = true
-  additional_storage_size = 60
+  additional_storage_size = 120
   snapshot_filename       = "mnesia_uat_v-1_latest.tgz"
 
   asg_target_groups = module.lb_uat_stockholm.target_groups
@@ -63,7 +63,7 @@ module "nodes_api_uat_singapore" {
   ami_name      = "aeternity-ubuntu-16.04-v1549009934"
 
   additional_storage      = true
-  additional_storage_size = 60
+  additional_storage_size = 120
   snapshot_filename       = "mnesia_uat_v-1_latest.tgz"
 
   asg_target_groups = module.lb_uat_singapore.target_groups
@@ -98,7 +98,7 @@ module "nodes_api_uat_stockholm_channels" {
   ami_name      = "aeternity-ubuntu-16.04-v1549009934"
 
   additional_storage      = true
-  additional_storage_size = 60
+  additional_storage_size = 120
 
   asg_target_groups = module.lb_uat_stockholm.target_groups_channels
 
