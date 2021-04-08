@@ -25,7 +25,7 @@ module "nodes_api_uat_stockholm" {
   }
 
   providers = {
-    aws = "aws.eu-north-1"
+    aws = aws.eu-north-1
   }
 }
 
@@ -42,7 +42,7 @@ module "lb_uat_stockholm" {
   state_channel_api_enabled = true
 
   providers = {
-    aws = "aws.eu-north-1"
+    aws = aws.eu-north-1
   }
 }
 
@@ -73,7 +73,7 @@ module "nodes_api_uat_singapore" {
   }
 
   providers = {
-    aws = "aws.ap-southeast-1"
+    aws = aws.ap-southeast-1
   }
 }
 
@@ -107,7 +107,7 @@ module "nodes_api_uat_stockholm_channels" {
   }
 
   providers = {
-    aws = "aws.eu-north-1"
+    aws = aws.eu-north-1
   }
 }
 
@@ -123,7 +123,7 @@ module "lb_uat_singapore" {
   state_channel_api_enabled = true
 
   providers = {
-    aws = "aws.ap-southeast-1"
+    aws = aws.ap-southeast-1
   }
 }
 
