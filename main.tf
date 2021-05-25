@@ -1,5 +1,5 @@
 module "nodes_api_uat_stockholm" {
-  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.3.1"
+  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.5.0"
   env               = "api_uat"
   envid             = "api_uat"
   bootstrap_version = var.bootstrap_version
@@ -30,7 +30,7 @@ module "nodes_api_uat_stockholm" {
 }
 
 module "lb_uat_stockholm" {
-  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.3.1"
+  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.3.2"
   env                       = "api_uat"
   fqdn                      = var.lb_fqdn
   dns_zone                  = var.dns_zone
@@ -47,7 +47,7 @@ module "lb_uat_stockholm" {
 }
 
 module "nodes_api_uat_singapore" {
-  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.3.1"
+  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.5.0"
   env               = "api_uat"
   envid             = "api_uat"
   bootstrap_version = var.bootstrap_version
@@ -112,7 +112,7 @@ module "nodes_api_uat_stockholm_channels" {
 }
 
 module "lb_uat_singapore" {
-  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.2.0"
+  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.3.2"
   env                       = "api_uat"
   fqdn                      = var.lb_fqdn
   dns_zone                  = var.dns_zone
@@ -128,7 +128,7 @@ module "lb_uat_singapore" {
 }
 
 module "gateway_uat" {
-  source          = "github.com/aeternity/terraform-aws-api-gateway?ref=v3.2.2"
+  source          = "github.com/aeternity/terraform-aws-api-gateway?ref=v3.2.3"
   env             = "api_uat"
   dns_zone        = var.dns_zone
   api_domain      = var.domain
