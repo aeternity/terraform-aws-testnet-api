@@ -1,5 +1,5 @@
 module "nodes_api_uat_stockholm" {
-  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.5.0"
+  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.6.0"
   env               = "api_uat"
   envid             = "api_uat"
   bootstrap_version = var.bootstrap_version
@@ -16,13 +16,8 @@ module "nodes_api_uat_stockholm" {
 
   additional_storage      = true
   additional_storage_size = 120
-  snapshot_filename       = "mnesia_uat_v-1_latest.tgz"
 
   asg_target_groups = module.lb_uat_stockholm.target_groups
-
-  aeternity = {
-    package = var.package
-  }
 
   providers = {
     aws = aws.eu-north-1
@@ -30,7 +25,7 @@ module "nodes_api_uat_stockholm" {
 }
 
 module "lb_uat_stockholm" {
-  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.3.2"
+  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.3.3"
   env                       = "api_uat"
   fqdn                      = var.lb_fqdn
   dns_zone                  = var.dns_zone
@@ -47,7 +42,7 @@ module "lb_uat_stockholm" {
 }
 
 module "nodes_api_uat_singapore" {
-  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.5.0"
+  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.6.0"
   env               = "api_uat"
   envid             = "api_uat"
   bootstrap_version = var.bootstrap_version
@@ -64,13 +59,8 @@ module "nodes_api_uat_singapore" {
 
   additional_storage      = true
   additional_storage_size = 120
-  snapshot_filename       = "mnesia_uat_v-1_latest.tgz"
 
   asg_target_groups = module.lb_uat_singapore.target_groups
-
-  aeternity = {
-    package = var.package
-  }
 
   providers = {
     aws = aws.ap-southeast-1
@@ -78,7 +68,7 @@ module "nodes_api_uat_singapore" {
 }
 
 module "nodes_api_uat_stockholm_channels" {
-  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.5.0"
+  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.6.0"
   env               = "api_uat"
   envid             = "api_uat"
   bootstrap_version = var.bootstrap_version
@@ -102,17 +92,13 @@ module "nodes_api_uat_stockholm_channels" {
 
   asg_target_groups = module.lb_uat_stockholm.target_groups_channels
 
-  aeternity = {
-    package = var.package
-  }
-
   providers = {
     aws = aws.eu-north-1
   }
 }
 
 module "lb_uat_singapore" {
-  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.3.2"
+  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.3.3"
   env                       = "api_uat"
   fqdn                      = var.lb_fqdn
   dns_zone                  = var.dns_zone
