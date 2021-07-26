@@ -12,7 +12,7 @@ module "nodes_api_uat_stockholm" {
 
   spot_price    = "0.15"
   instance_type = "c5.xlarge"
-  ami_name      = "aeternity-ubuntu-16.04-v1549009934"
+  ami_name      = "aeternity-ubuntu-18.04-v1616681631"
 
   additional_storage      = true
   additional_storage_size = 120
@@ -55,7 +55,7 @@ module "nodes_api_uat_singapore" {
 
   spot_price    = "0.15"
   instance_type = "c5.xlarge"
-  ami_name      = "aeternity-ubuntu-16.04-v1549009934"
+  ami_name      = "aeternity-ubuntu-18.04-v1616681631"
 
   additional_storage      = true
   additional_storage_size = 120
@@ -85,7 +85,7 @@ module "nodes_api_uat_stockholm_channels" {
 
   spot_price    = "0.15"
   instance_type = "c5.xlarge"
-  ami_name      = "aeternity-ubuntu-16.04-v1549009934"
+  ami_name      = "aeternity-ubuntu-18.04-v1616681631"
 
   additional_storage      = true
   additional_storage_size = 120
