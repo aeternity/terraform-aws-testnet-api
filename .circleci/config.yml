@@ -5,6 +5,7 @@ executors:
       - image: aeternity/infrastructure
     working_directory: /src
 
+
 commands:
   setup_secrets:
     steps:
