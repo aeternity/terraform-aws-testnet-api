@@ -23,12 +23,12 @@ variable "domain" {
 }
 
 variable "domain_aliases" {
-  type    = list
+  type    = list(any)
   default = ["sdk-testnet.aepps.com", "freya.aeternity.io"]
 }
 
 variable "mdw_fqdn" {
-  default = "testnet.aeternal.io"
+  default = "testnet.aeternal.aeternity.io"
 }
 
 variable "headers" {
