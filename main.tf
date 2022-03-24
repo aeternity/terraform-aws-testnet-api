@@ -15,7 +15,7 @@ module "nodes_api_uat_stockholm" {
   ami_name      = "aeternity-ubuntu-18.04-v1616681631"
 
   additional_storage      = true
-  additional_storage_size = 120
+  additional_storage_size = 240
 
   asg_target_groups = module.lb_uat_stockholm.target_groups
 
@@ -58,7 +58,7 @@ module "nodes_api_uat_singapore" {
   ami_name      = "aeternity-ubuntu-18.04-v1616681631"
 
   additional_storage      = true
-  additional_storage_size = 120
+  additional_storage_size = 240
 
   asg_target_groups = module.lb_uat_singapore.target_groups
 
@@ -88,7 +88,7 @@ module "nodes_api_uat_stockholm_channels" {
   ami_name      = "aeternity-ubuntu-18.04-v1616681631"
 
   additional_storage      = true
-  additional_storage_size = 120
+  additional_storage_size = 240
 
   asg_target_groups = module.lb_uat_stockholm.target_groups_channels
 
