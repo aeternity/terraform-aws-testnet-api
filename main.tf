@@ -1,23 +1,33 @@
 module "nodes_api_uat_stockholm" {
-  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.6.1"
-  env               = "api_uat"
-  envid             = "api_uat"
-  bootstrap_version = var.bootstrap_version
-  vault_role        = "ae-node"
-  vault_addr        = var.vault_addr
+  source = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v3.0.1"
+  env    = "api_uat"
 
   static_nodes   = 0
   spot_nodes_min = 2
   spot_nodes_max = 10
 
-  spot_price    = "0.15"
-  instance_type = "c5.xlarge"
-  ami_name      = "aeternity-ubuntu-18.04-v1653564902"
+  instance_type  = "c6i.xlarge"
+  instance_types = ["c6i.xlarge", "c5d.xlarge", "c5.xlarge", "c7i.xlarge"]
+  ami_name       = "aeternity-ubuntu-18.04-v1653564902"
 
+  root_volume_size        = 8
   additional_storage      = true
   additional_storage_size = 240
 
   asg_target_groups = module.lb_uat_stockholm.target_groups
+
+  tags = {
+    role  = "aenode"
+    env   = "api_uat"
+    envid = "api_uat"
+  }
+
+  config_tags = {
+    bootstrap_version = var.bootstrap_version
+    vault_role        = "ae-node"
+    vault_addr        = var.vault_addr
+    node_config       = "secret/aenode/config/api_uat"
+  }
 
   providers = {
     aws = aws.eu-north-1
@@ -25,7 +35,7 @@ module "nodes_api_uat_stockholm" {
 }
 
 module "lb_uat_stockholm" {
-  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.3.4"
+  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.4.0"
   env                       = "api_uat"
   fqdn                      = var.lb_fqdn
   dns_zone                  = var.dns_zone
@@ -42,25 +52,35 @@ module "lb_uat_stockholm" {
 }
 
 module "nodes_api_uat_singapore" {
-  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.6.1"
-  env               = "api_uat"
-  envid             = "api_uat"
-  bootstrap_version = var.bootstrap_version
-  vault_role        = "ae-node"
-  vault_addr        = var.vault_addr
+  source = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v3.0.1"
+  env    = "api_uat"
 
   static_nodes   = 0
   spot_nodes_min = 2
   spot_nodes_max = 10
 
-  spot_price    = "0.15"
-  instance_type = "c5.xlarge"
-  ami_name      = "aeternity-ubuntu-18.04-v1653564902"
+  instance_type  = "c6i.xlarge"
+  instance_types = ["c6i.xlarge", "c5d.xlarge", "c5.xlarge"]
+  ami_name       = "aeternity-ubuntu-18.04-v1653564902"
 
+  root_volume_size        = 8
   additional_storage      = true
   additional_storage_size = 240
 
   asg_target_groups = module.lb_uat_singapore.target_groups
+
+  tags = {
+    role  = "aenode"
+    env   = "api_uat"
+    envid = "api_uat"
+  }
+
+  config_tags = {
+    bootstrap_version = var.bootstrap_version
+    vault_role        = "ae-node"
+    vault_addr        = var.vault_addr
+    node_config       = "secret/aenode/config/api_uat"
+  }
 
   providers = {
     aws = aws.ap-southeast-1
@@ -68,29 +88,39 @@ module "nodes_api_uat_singapore" {
 }
 
 module "nodes_api_uat_stockholm_channels" {
-  source            = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v2.6.1"
-  env               = "api_uat"
-  envid             = "api_uat"
-  bootstrap_version = var.bootstrap_version
-  vault_role        = "ae-node"
-  vault_addr        = var.vault_addr
-  subnets           = module.nodes_api_uat_stockholm.subnets
-  vpc_id            = module.nodes_api_uat_stockholm.vpc_id
-
-  enable_state_channels = true
+  source = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v3.0.1"
+  env    = "api_uat"
 
   static_nodes   = 1
   spot_nodes_min = 0
   spot_nodes_max = 0
 
-  spot_price    = "0.15"
-  instance_type = "c5.xlarge"
-  ami_name      = "aeternity-ubuntu-18.04-v1653564902"
+  instance_type  = "c6i.xlarge"
+  instance_types = ["c6i.xlarge", "c5d.xlarge", "c5.xlarge", "c7i.xlarge"]
+  ami_name       = "aeternity-ubuntu-18.04-v1653564902"
 
+  root_volume_size        = 8
   additional_storage      = true
   additional_storage_size = 240
 
   asg_target_groups = module.lb_uat_stockholm.target_groups_channels
+  subnets           = module.nodes_api_uat_stockholm.subnets
+  vpc_id            = module.nodes_api_uat_stockholm.vpc_id
+
+  enable_state_channels = true
+
+  tags = {
+    role  = "aenode"
+    env   = "api_uat"
+    envid = "api_uat"
+  }
+
+  config_tags = {
+    bootstrap_version = var.bootstrap_version
+    vault_role        = "ae-node"
+    vault_addr        = var.vault_addr
+    node_config       = "secret/aenode/config/api_uat"
+  }
 
   providers = {
     aws = aws.eu-north-1
@@ -98,7 +128,7 @@ module "nodes_api_uat_stockholm_channels" {
 }
 
 module "lb_uat_singapore" {
-  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.3.4"
+  source                    = "github.com/aeternity/terraform-aws-api-loadbalancer?ref=v1.4.0"
   env                       = "api_uat"
   fqdn                      = var.lb_fqdn
   dns_zone                  = var.dns_zone
