@@ -111,6 +111,7 @@ module "nodes_api_uat_stockholm_channels" {
 
   tags = {
     role  = "aenode"
+    kind  = "channel"
     env   = "api_uat"
     envid = "api_uat"
   }
