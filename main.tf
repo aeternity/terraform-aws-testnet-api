@@ -95,13 +95,13 @@ module "nodes_api_uat_stockholm_channels" {
   spot_nodes_min = 0
   spot_nodes_max = 0
 
-  instance_type  = "c6i.xlarge"
-  instance_types = ["c6i.xlarge", "c5d.xlarge", "c5.xlarge", "c7i.xlarge"]
+  instance_type  = "t3.large"
+  instance_types = ["t3.large", "c5.large", "m5.large"]
   ami_name       = "aeternity-ubuntu-18.04-v1653564902"
 
-  root_volume_size        = 8
+  root_volume_size        = 20
   additional_storage      = true
-  additional_storage_size = 240
+  additional_storage_size = 200
 
   asg_target_groups = module.lb_uat_stockholm.target_groups_channels
   subnets           = module.nodes_api_uat_stockholm.subnets
@@ -120,7 +120,7 @@ module "nodes_api_uat_stockholm_channels" {
     bootstrap_version = var.bootstrap_version
     vault_role        = "ae-node"
     vault_addr        = var.vault_addr
-    node_config       = "secret/aenode/config/api_uat"
+    node_config       = "secret/aenode/config/api_uat_channel"
   }
 
   providers = {
