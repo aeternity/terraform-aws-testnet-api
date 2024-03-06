@@ -1,5 +1,5 @@
 module "nodes_api_uat_stockholm" {
-  source = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v3.0.1"
+  source = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v3.1.0"
   env    = "api_uat"
 
   static_nodes   = 0
@@ -8,7 +8,7 @@ module "nodes_api_uat_stockholm" {
 
   instance_type  = "c6i.xlarge"
   instance_types = ["c6i.xlarge", "c5d.xlarge", "c5.xlarge", "c7i.xlarge"]
-  ami_name       = "aeternity-ubuntu-18.04-v1653564902"
+  ami_name       = "aeternity-ubuntu-22.04-v1709639419"
 
   root_volume_size        = 8
   additional_storage      = true
@@ -23,10 +23,10 @@ module "nodes_api_uat_stockholm" {
   }
 
   config_tags = {
-    bootstrap_version = var.bootstrap_version
     vault_role        = "ae-node"
     vault_addr        = var.vault_addr
-    node_config       = "secret/aenode/config/api_uat"
+    bootstrap_version = var.bootstrap_version
+    bootstrap_config  = "secret2/aenode/config/api_uat"
   }
 
   providers = {
@@ -52,7 +52,7 @@ module "lb_uat_stockholm" {
 }
 
 module "nodes_api_uat_singapore" {
-  source = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v3.0.1"
+  source = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v3.1.0"
   env    = "api_uat"
 
   static_nodes   = 0
@@ -61,7 +61,7 @@ module "nodes_api_uat_singapore" {
 
   instance_type  = "c6i.xlarge"
   instance_types = ["c6i.xlarge", "c5d.xlarge", "c5.xlarge"]
-  ami_name       = "aeternity-ubuntu-18.04-v1653564902"
+  ami_name       = "aeternity-ubuntu-22.04-v1709639419"
 
   root_volume_size        = 8
   additional_storage      = true
@@ -76,10 +76,10 @@ module "nodes_api_uat_singapore" {
   }
 
   config_tags = {
-    bootstrap_version = var.bootstrap_version
     vault_role        = "ae-node"
     vault_addr        = var.vault_addr
-    node_config       = "secret/aenode/config/api_uat"
+    bootstrap_version = var.bootstrap_version
+    bootstrap_config  = "secret2/aenode/config/api_uat"
   }
 
   providers = {
@@ -88,7 +88,7 @@ module "nodes_api_uat_singapore" {
 }
 
 module "nodes_api_uat_stockholm_channels" {
-  source = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v3.0.1"
+  source = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v3.1.0"
   env    = "api_uat"
 
   static_nodes   = 1
@@ -97,7 +97,7 @@ module "nodes_api_uat_stockholm_channels" {
 
   instance_type  = "t3.large"
   instance_types = ["t3.large", "c5.large", "m5.large"]
-  ami_name       = "aeternity-ubuntu-18.04-v1653564902"
+  ami_name       = "aeternity-ubuntu-22.04-v1709639419"
 
   root_volume_size        = 20
   additional_storage      = true
@@ -117,10 +117,10 @@ module "nodes_api_uat_stockholm_channels" {
   }
 
   config_tags = {
-    bootstrap_version = var.bootstrap_version
     vault_role        = "ae-node"
     vault_addr        = var.vault_addr
-    node_config       = "secret/aenode/config/api_uat_channel"
+    bootstrap_version = var.bootstrap_version
+    bootstrap_config  = "secret2/aenode/config/api_uat_channel"
   }
 
   providers = {
