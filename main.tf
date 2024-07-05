@@ -8,7 +8,7 @@ module "nodes_api_uat_stockholm" {
 
   instance_type  = "c6i.xlarge"
   instance_types = ["c6i.xlarge", "c5d.xlarge", "c5.xlarge", "c7i.xlarge"]
-  ami_name       = "aeternity-ubuntu-22.04-v1709639419"
+  ami_name       = "aeternity-ubuntu-22.04-v1720022468"
 
   root_volume_size        = 24
   additional_storage      = true
@@ -61,7 +61,7 @@ module "nodes_api_uat_singapore" {
 
   instance_type  = "c6i.xlarge"
   instance_types = ["c6i.xlarge", "c5d.xlarge", "c5.xlarge"]
-  ami_name       = "aeternity-ubuntu-22.04-v1709639419"
+  ami_name       = "aeternity-ubuntu-22.04-v1720022468"
 
   root_volume_size        = 24
   additional_storage      = true
