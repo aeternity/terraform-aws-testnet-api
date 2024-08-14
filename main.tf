@@ -1,5 +1,5 @@
 module "nodes_api_uat_stockholm" {
-  source = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v3.3.0"
+  source = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v3.4.0"
   env    = "api_uat"
 
   static_nodes   = 0
@@ -52,7 +52,7 @@ module "lb_uat_stockholm" {
 }
 
 module "nodes_api_uat_singapore" {
-  source = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v3.3.0"
+  source = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v3.4.0"
   env    = "api_uat"
 
   static_nodes   = 0
@@ -88,7 +88,7 @@ module "nodes_api_uat_singapore" {
 }
 
 module "nodes_api_uat_stockholm_channels" {
-  source = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v3.3.0"
+  source = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v3.4.0"
   env    = "api_uat"
 
   static_nodes   = 1
