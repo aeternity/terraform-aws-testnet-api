@@ -145,7 +145,7 @@ module "lb_uat_singapore" {
 }
 
 module "gateway_uat" {
-  source          = "github.com/aeternity/terraform-aws-api-gateway?ref=v3.2.4"
+  source          = "github.com/aeternity/terraform-aws-api-gateway?ref=v4.0.0"
   env             = "api_uat"
   dns_zone        = var.dns_zone
   api_domain      = var.domain
