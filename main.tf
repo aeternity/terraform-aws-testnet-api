@@ -12,7 +12,7 @@ module "nodes_api_uat_stockholm" {
 
   root_volume_size        = 24
   additional_storage      = true
-  additional_storage_size = 240
+  additional_storage_size = 300
 
   asg_target_groups = module.lb_uat_stockholm.target_groups
 
@@ -65,7 +65,7 @@ module "nodes_api_uat_singapore" {
 
   root_volume_size        = 24
   additional_storage      = true
-  additional_storage_size = 240
+  additional_storage_size = 300
 
   asg_target_groups = module.lb_uat_singapore.target_groups
 
