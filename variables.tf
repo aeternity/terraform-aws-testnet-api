@@ -42,3 +42,7 @@ variable "certificate_arn" {
 variable "ae_mdw_fqdn" {
   default = "mdw.testnet.aeternity.io"
 }
+
+variable "ch_fqdn" {
+  default = "channel.testnet.aeternity.io"
+}

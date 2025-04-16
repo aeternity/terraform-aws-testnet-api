@@ -154,7 +154,7 @@ module "gateway_uat" {
   lb_fqdn         = var.lb_fqdn
   mdw_fqdn        = var.mdw_fqdn
   headers         = var.headers
-  ch_fqdn         = module.lb_uat_stockholm.dns_name
+  ch_fqdn         = var.ch_fqdn
   ae_mdw_fqdn     = var.ae_mdw_fqdn
 
   api_cache_default_ttl = 1
