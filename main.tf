@@ -2,7 +2,7 @@ module "nodes_api_uat_stockholm" {
   source = "github.com/aeternity/terraform-aws-aenode-deploy?ref=v4.0.0"
   env    = "api_uat"
 
-  static_nodes   = 0
+  static_nodes   = 1
   spot_nodes_min = 1
   spot_nodes_max = 10
 
