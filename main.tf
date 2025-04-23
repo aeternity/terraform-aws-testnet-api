@@ -156,6 +156,7 @@ module "gateway_uat" {
   headers         = var.headers
   ch_fqdn         = var.ch_fqdn
   ae_mdw_fqdn     = var.ae_mdw_fqdn
+  price_class     = "PriceClass_100"
 
   api_cache_default_ttl = 1
   mdw_cache_default_ttl = 3
