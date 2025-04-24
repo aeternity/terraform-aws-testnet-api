@@ -3,8 +3,8 @@ module "nodes_api_uat_stockholm" {
   env    = "api_uat"
 
   static_nodes   = 1
-  spot_nodes_min = 1
-  spot_nodes_max = 10
+  spot_nodes_min = 0
+  spot_nodes_max = 0
 
   instance_type  = "c6i.xlarge"
   instance_types = ["c6i.xlarge", "c5d.xlarge", "c5.xlarge", "c7i.xlarge"]
